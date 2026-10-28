@@ -136,3 +136,4 @@ Both the React/Vite frontend and Node.js/Express backend run inside Docker conta
 - **Experiment 7**: Containerization with Dockerfiles, multi-stage Vite/Nginx build, and production port mappings.
 - **Experiment 8**: Full-duplex real-time communication using Socket.IO (broadcast chat and live security alert bus).
 - **Experiment 9**: Multi-container full-stack application deployment with Docker Compose (`docker-compose.yml`), container healthchecks, and live service orchestration.
+- **Experiment 10**: CI/CD deployment with GitHub Actions (`.github/workflows/ci.yml`), Render cloud backend hosting, Vercel frontend SPA hosting, and dynamic production CORS.
