@@ -6,6 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "test": "node --check server.js",
     "dev": "nodemon server.js",
     "seed:admin": "node scripts/seedAdmin.js",
     "test:exp6": "node test_exp6.js",
