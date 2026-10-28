@@ -91,20 +91,20 @@ export default function DockerStatus() {
         {/* DevOps & Diagnostics Breakdown */}
         <div className="bg-surface border border-border rounded-xl p-6 shadow-sm mb-8">
           <h3 className="text-sm font-semibold mb-4 text-text flex items-center justify-between">
-            <span>Experiment 7 Container Diagnostics</span>
+            <span>Experiment 9 Docker Compose Diagnostics</span>
             <span className="font-mono text-xs text-dim">CyberAudit 360</span>
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
             <div className="p-3 bg-surface2 rounded-md border border-border">
               <span className="text-dim block mb-1">Frontend Service</span>
-              <span className="text-cyan font-semibold">React + Vite on Nginx</span>
-              <div className="text-dim mt-1">Container Port: 80 → Host: 3000</div>
+              <span className="text-cyan font-semibold">React + Vite Dev Container</span>
+              <div className="text-dim mt-1">Container Port: 5173 → Host: 5173</div>
             </div>
 
             <div className="p-3 bg-surface2 rounded-md border border-border">
               <span className="text-dim block mb-1">Backend Service</span>
-              <span className="text-cyan font-semibold">Node.js / Express</span>
+              <span className="text-cyan font-semibold">Node.js / Express + Socket.IO</span>
               <div className="text-dim mt-1">Container Port: 5000 → Host: 5000</div>
             </div>
 
@@ -125,9 +125,13 @@ export default function DockerStatus() {
         </div>
 
         {/* Back navigation */}
-        <div className="text-center flex items-center justify-center gap-4 text-sm">
+        <div className="text-center flex flex-wrap items-center justify-center gap-4 text-sm">
           <Link to="/" className="text-dim hover:text-cyan transition">
             ← Back to Platform Landing
+          </Link>
+          <span className="text-border">|</span>
+          <Link to="/chat" className="text-dim hover:text-cyan transition">
+            💬 Real-Time Chat (Exp 8)
           </Link>
           <span className="text-border">|</span>
           <Link to="/login" className="text-dim hover:text-cyan transition">
@@ -137,7 +141,7 @@ export default function DockerStatus() {
       </div>
 
       <footer className="text-center text-xs text-dim py-6 border-t border-border mt-12 font-mono">
-        CyberAudit 360 • Experiment 7: Containerized with Docker &amp; Docker Compose
+        CyberAudit 360 • Experiment 9: Multi-Container Architecture with Docker Compose
       </footer>
     </div>
   );

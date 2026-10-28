@@ -70,9 +70,12 @@ export function Landing() {
             <a href="#why" className="hover:text-text transition">Platform</a>
             <a href="#modules" className="hover:text-text transition">Modules</a>
             <a href="#recovery" className="hover:text-text transition">Recovery</a>
+            <Link to="/chat" className="hover:text-text transition text-xs flex items-center gap-1">
+              💬 Socket Chat (Exp 8)
+            </Link>
             <Link to="/docker" className="hover:text-cyan transition font-mono text-xs text-cyan flex items-center gap-1.5 px-2.5 py-1 rounded bg-cyan/10 border border-cyan/20">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan" />
-              Docker Exp 7
+              Docker Exp 9
             </Link>
           </nav>
           <div className="flex items-center gap-3">
@@ -87,7 +90,7 @@ export function Landing() {
         <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
           <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan border border-cyan/30 bg-cyan/5 rounded-full px-3 py-1 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan" />
-            LIVE MONITORING ACTIVE • DOCKER READY
+            LIVE MONITORING ACTIVE • DOCKER COMPOSE READY
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05] max-w-3xl">
             Protect. Monitor. <span className="text-cyan">Recover.</span>
@@ -98,9 +101,11 @@ export function Landing() {
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link to="/login" className="bg-cyan text-bg font-semibold px-6 py-3 rounded-md hover:bg-cyan/90 transition">Get Started</Link>
-            <Link to="/login" className="border border-border text-text font-medium px-6 py-3 rounded-md hover:border-cyan/50 transition">Login</Link>
+            <Link to="/chat" className="border border-border text-text font-medium px-6 py-3 rounded-md hover:border-cyan/50 transition flex items-center gap-2">
+              💬 Live Chat (Exp 8)
+            </Link>
             <Link to="/docker" className="border border-cyan/40 bg-cyan/10 text-cyan font-mono text-sm px-4 py-3 rounded-md hover:bg-cyan/20 transition flex items-center gap-2">
-              <span>🐳</span> Docker Exp 7 Status
+              <span>🐳</span> Docker Exp 9 Status
             </Link>
           </div>
 

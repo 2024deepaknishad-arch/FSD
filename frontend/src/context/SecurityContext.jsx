@@ -38,7 +38,7 @@ async function apiFetchAuditLogs() {
 }
 
 async function apiCreateAuditLog(log) {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('cyberaudit_token') || localStorage.getItem('token');
   const headers = { 'Content-Type': 'application/json' };
   if (token) headers['Authorization'] = `Bearer ${token}`;
 
@@ -185,7 +185,7 @@ export function SecurityProvider({ children }) {
 
   // Action 4: simulate security alert via backend REST API & Socket.IO broadcast
   const simulateSecurityAlert = useCallback(async (customPayload = {}) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('cyberaudit_token') || localStorage.getItem('token');
     const headers = { 'Content-Type': 'application/json' };
     if (token) headers['Authorization'] = `Bearer ${token}`;
 

@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+.env
+.git
+.gitignore
+*.log
+test_exp5.js
+test_exp6.js
+test_exp8.js
