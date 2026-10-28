@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { getSocket } from '../services/socket';
+import { API_BASE_URL } from '../config';
 
 const MOCK_ALERTS = [
   { id: 'ALT-1', risk: 'high', severity: 'high', type: 'Authentication Anomaly', title: 'Possible brute-force attack', meta: '10:51:19', timestamp: '10:51:19', detail: '5 failed login attempts on account "unknown" within 5 minutes.', message: '5 failed login attempts on account "unknown" within 5 minutes.', resolved: false },
@@ -7,7 +8,6 @@ const MOCK_ALERTS = [
   { id: 'ALT-3', risk: 'medium', severity: 'medium', type: 'Data Deletion Anomaly', title: 'Rapid mass deletion', meta: 'earlier today', timestamp: '09:30:12', detail: 'Rahul deleted 3 invoice records within 90 seconds.', message: 'Rahul deleted 3 invoice records within 90 seconds.', resolved: false },
 ];
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
 async function apiFetchAlerts() {
   try {

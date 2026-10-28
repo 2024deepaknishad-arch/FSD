@@ -23,8 +23,8 @@ const app = express();
 const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 
-// Allowed frontend origins for CORS (Vite dev, Docker frontend, localhost)
-const allowedOrigins = [
+// Allowed frontend origins for CORS (Vite dev, Docker frontend, localhost, Vercel & Render production)
+const defaultAllowedOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
   'http://localhost:3000',
@@ -33,10 +33,40 @@ const allowedOrigins = [
   'http://localhost',
 ];
 
+const envAllowedOrigins = (process.env.FRONTEND_URL || '')
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+const isOriginAllowed = (origin, callback) => {
+  // Allow requests without origin (e.g. mobile apps, curl, Postman, server-to-server)
+  if (!origin) {
+    return callback(null, true);
+  }
+
+  // Check explicit default and env-configured origins
+  if (defaultAllowedOrigins.includes(origin) || envAllowedOrigins.includes(origin)) {
+    return callback(null, true);
+  }
+
+  // Allow any deployed Vercel preview or production domain (*.vercel.app)
+  if (/^https:\/\/[a-zA-Z0-9_.-]+\.vercel\.app$/.test(origin)) {
+    return callback(null, true);
+  }
+
+  // Allow deployed Render domain (*.onrender.com)
+  if (/^https:\/\/[a-zA-Z0-9_.-]+\.onrender\.com$/.test(origin)) {
+    return callback(null, true);
+  }
+
+  // Block any unrecognized origin
+  return callback(null, false);
+};
+
 // Configure Socket.IO server attached to the HTTP server
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigins,
+    origin: isOriginAllowed,
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -93,14 +123,7 @@ app.use(helmet());
 // Security Middleware: Cross-Origin Resource Sharing (CORS)
 app.use(
   cors({
-    origin: [
-      'http://localhost:5173',
-      'http://127.0.0.1:5173',
-      'http://localhost:3000',
-      'http://127.0.0.1:3000',
-      'http://localhost:80',
-      'http://localhost',
-    ],
+    origin: isOriginAllowed,
     credentials: true,
   })
 );
@@ -129,6 +152,16 @@ app.get('/', (_req, res) => {
   });
 });
 
+// Experiment 10: Health check endpoint for Render / cloud monitoring
+app.get('/api/health', (_req, res) => {
+  res.status(200).json({
+    status: 'Healthy',
+    service: 'CyberAudit 360 API',
+    uptime: Math.floor(process.uptime()),
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // Experiment 7 Docker API endpoint (as required by EXP NO.7)
 app.get('/api', (_req, res) => {
   res.json({
@@ -153,7 +186,7 @@ app.io = io;
 
 // MongoDB Atlas connection logic (Atlas only - no local fallback)
 async function connectDB() {
-  const uri = process.env.MONGO_URI;
+  const uri = process.env.MONGO_URI || process.env.MONGODB_URI;
 
   if (!uri) {
     console.error('MongoDB Connection Error: MONGO_URI is not set in environment variables');
