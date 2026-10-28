@@ -77,6 +77,10 @@ export function Landing() {
               <span className="w-1.5 h-1.5 rounded-full bg-cyan" />
               Docker Exp 9
             </Link>
+            <span className="font-mono text-xs text-green flex items-center gap-1.5 px-2.5 py-1 rounded bg-green/10 border border-green/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+              CI/CD Exp 10
+            </span>
           </nav>
           <div className="flex items-center gap-3">
             <Link to="/login" className="text-sm text-dim hover:text-text transition">Log in</Link>
@@ -90,7 +94,7 @@ export function Landing() {
         <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
           <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan border border-cyan/30 bg-cyan/5 rounded-full px-3 py-1 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan" />
-            LIVE MONITORING ACTIVE • DOCKER COMPOSE READY
+            LIVE MONITORING ACTIVE • CI/CD DEPLOYED (EXP 10)
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05] max-w-3xl">
             Protect. Monitor. <span className="text-cyan">Recover.</span>
