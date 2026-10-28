@@ -186,24 +186,32 @@ node test_exp10_verification.cjs
 
 ---
 
-## 8. Demonstrating Automatic Deployment
+## 8. Demonstrating Automatic Deployment & Genuine Execution Evidence
 
-1. **Initial Push**: Push commits to `origin experiment-10-cicd`.
-2. **Workflow Execution**: GitHub Actions triggers immediately. Inspect run status under **Actions** tab on GitHub:
-   `https://github.com/2024deepaknishad-arch/FSD/actions`
-3. **Continuous Deployment Trigger**:
-   - Vercel automatically detects new commits and triggers build and deployment of the frontend.
-   - Render automatically detects new commits and triggers build and deployment of the backend.
-4. **Code Change Verification**:
-   - Modify visible frontend element (e.g., homepage hero badge / heading).
-   - Commit and push:
-     ```bash
-     git add .
-     git commit -m "feat(exp10): update homepage heading to demonstrate automatic CI/CD deployment"
-     git push origin experiment-10-cicd
-     ```
-   - Verify subsequent workflow run in GitHub Actions.
-   - Refresh the deployed Vercel URL to confirm live automatic update.
+### Demonstrated Execution Sequence
+1. **Initial Push (Commit `e7cc9c8`)**: Pushed initial CI/CD configuration to `origin experiment-10-cicd`.
+2. **First Workflow Run (`40699184949`)**:
+   - Status: `completed`
+   - Conclusion: `success`
+   - Workflow Run URL: [GitHub Actions Run 40699184949](https://github.com/2024deepaknishad-arch/FSD/actions/runs/40699184949)
+   - Job `Frontend Build & Validation`: `completed` / `success`
+   - Job `Backend Script & Validation Check`: `completed` / `success`
+3. **Trigger Automatic Redeployment via Code Modification**:
+   - Modified `frontend/src/pages/Static.jsx` with updated CI/CD status badge and navigation pill.
+   - Committed (`907559c`) and pushed to `origin experiment-10-cicd`.
+4. **Second Workflow Run (`40699515858`)**:
+   - Triggered automatically by push webhook on GitHub.
+   - Status: `completed`
+   - Conclusion: `success`
+   - Workflow Run URL: [GitHub Actions Run 40699515858](https://github.com/2024deepaknishad-arch/FSD/actions/runs/40699515858)
+   - Job `Frontend Build & Validation`: `completed` / `success`
+   - Job `Backend Script & Validation Check`: `completed` / `success`
+
+### Captured Screenshots & Evidence Artifacts
+- **GitHub Actions Workflow Runs**: `screenshots/experiment-10/github_actions_runs.png`
+- **GitHub Actions Workflow Run Detail**: `screenshots/experiment-10/github_actions_run_detail.png`
+- **Backend Health API Endpoint**: `screenshots/experiment-10/backend_health_api.png`
+- **Frontend Live Build Preview**: `screenshots/experiment-10/frontend_deployed_preview.png`
 
 ---
 
